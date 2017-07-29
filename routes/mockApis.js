@@ -5,7 +5,7 @@ var Mock = require('mockjs');
 // 使用mock模块生成对应契约的mock数据
 
 /* mock apis */
-router.get('/search', function(req, res, next) {
+router.all('/search', function(req, res, next) {
 	let data = Mock.mock({
 		'list|3-10': [{
 			'id|+1': 1,
