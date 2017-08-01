@@ -1,0 +1,2 @@
+webpackJsonp([3],{117:function(e,t,n){var r=n(8)(null,n(300),null,null);e.exports=r.exports},300:function(e,t){e.exports={render:function(){var e=this,t=e.$createElement,n=e._self._c||t;return n("div",{staticClass:"detail-page"},[n("h4",[e._v("详情页")]),e._v(" "),n("router-view")],1)},staticRenderFns:[]}}});
+//# sourceMappingURL=3.15495ca90390c79f0b65.js.map

@@ -1,0 +1,2 @@
+webpackJsonp([6],{116:function(n,e,t){var r=t(8)(null,t(292),null,null);n.exports=r.exports},292:function(n,e){n.exports={render:function(){var n=this,e=n.$createElement;return(n._self._c||e)("div",[n._v("资产交易")])},staticRenderFns:[]}}});
+//# sourceMappingURL=6.68e16a5481f600e58dc8.js.map

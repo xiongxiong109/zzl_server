@@ -15,6 +15,7 @@
     "serve-favicon": "~2.3.0"
   },
   "devDependencies": {
+    "ejs": "^2.5.7",
     "md5": "^2.2.1",
     "mockjs": "^1.0.1-beta3",
     "request": "^2.81.0"

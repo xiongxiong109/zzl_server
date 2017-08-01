@@ -1,0 +1,2 @@
+webpackJsonp([5],{119:function(e,n,t){var r=t(8)(null,t(294),null,null);e.exports=r.exports},294:function(e,n){e.exports={render:function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"home-page"},[t("h4",[e._v("home page")]),e._v(" "),t("router-view")],1)},staticRenderFns:[]}}});
+//# sourceMappingURL=5.f7a8f31120f629bb123e.js.map
