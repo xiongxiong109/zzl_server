@@ -15,7 +15,10 @@ router.all('/search', function(req, res, next) {
 		}]
 	});
 	setTimeout(() => {
-		res.send(data);
+		res.send({
+			code: 200,
+			list: data.list
+		});
 	}, Math.random() * 300 + 300);
 });
 
