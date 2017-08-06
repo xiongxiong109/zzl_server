@@ -1,11 +1,12 @@
-var express = require('express');
-var router = express.Router();
+import express from 'express'
+import Mock from 'mockjs'
 
-var Mock = require('mockjs');
+let router = express.Router();
+
 // 使用mock模块生成对应契约的mock数据
 
 /* mock apis */
-router.all('/search', function(req, res, next) {
+router.all('/search', (req, res, next) => {
 	let data = Mock.mock({
 		'list|3-10': [{
 			'id|+1': 1,

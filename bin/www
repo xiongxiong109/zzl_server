@@ -3,6 +3,9 @@
 /**
  * Module dependencies.
  */
+require('babel-core/register')
+require('babel-polyfill')
+require('ignore-styles')
 
 var app = require('../app');
 var debug = require('debug')('zzl_server:server');
