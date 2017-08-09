@@ -8,6 +8,7 @@ import bodyParser from 'body-parser'
 
 import fetch from './middlewares/fetch'
 import routes from './routes'
+import ssrRoutes from './routes/ssrRoutes'
 import mockApis from './routes/mockApis'
 import apis from './routes/apis'
 
@@ -28,7 +29,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(fetch); // fetch middleware
 app.use('/testApis', mockApis);
 app.use('/1.0.0/web/', apis);
-app.use('/', routes);
+app.use('/ssr', ssrRoutes); // 服务端渲染页面
+app.use('/', routes); // 这个中间件里面放了vue router /* 匹配404路由, 所以/ssr要放在上面
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
