@@ -1,6 +1,6 @@
 import express from 'express'
 import ssr from '../middlewares/ssr'
-import { createRenderer } from 'vue-server-renderer'
+import { createRenderer, createBundleRenderer } from 'vue-server-renderer'
 
 const router = express.Router()
 
@@ -26,6 +26,12 @@ router.get('/index', async (req, res, next) => {
 		}
 	});
 	// res.render('ssr/index', {title: 'vue_ssr'});
+});
+
+router.get('/server_bundle', (req, res, next) => {
+	const renderer = createBundleRenderer({}, {runInNewContext: false});
+	console.log(renderer);
+	res.send('ok');
 });
 
 export default router
