@@ -62,6 +62,7 @@ router.post('/driverlocation', (req, res, next) => {
 		dpoi, // 出发地 pos
 		cpoi // driver pos
 	};
+	console.log(typeof mockJSON)
 	// setTimeout(() => {
 	res.send(mockJSON)
 	// }, 300);
