@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "server": "webpack --config ./build/webpack.server.config.js"
   },
   "config": {
     "env": "DEV"
@@ -16,6 +17,7 @@
     "babel-preset-stage-3": "^6.24.1",
     "body-parser": "~1.15.1",
     "cookie-parser": "~1.4.3",
+    "css-loader": "^0.28.4",
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "ignore-styles": "^5.0.1",
@@ -24,6 +26,7 @@
     "serve-favicon": "~2.3.0",
     "vue": "^2.4.2",
     "vue-server-renderer": "^2.4.2",
+    "vue-style-loader": "^3.0.1",
     "vue-template-compiler": "^2.4.2"
   },
   "devDependencies": {

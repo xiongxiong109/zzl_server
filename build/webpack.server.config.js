@@ -9,7 +9,7 @@ module.exports = merge(baseConfig, {
 	entry: path.resolve('./', 'routes/ssr/entry-server.js'),
 	target: 'node',
 	output: {
-		filename: 'vue-ssr-server-bundle.json',
+		filename: 'entry-server.js', // 必须加name, 并且需要是js文件, 否则编译不通过
 		path: path.resolve('./', 'bundle/'),
 		libraryTarget: 'commonjs2'
 	},
