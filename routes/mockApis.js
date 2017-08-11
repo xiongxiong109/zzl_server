@@ -44,7 +44,7 @@ router.post('/driverlocation', (req, res, next) => {
 		lng: arrlng[mockI],
 		// desc: "司机正在赶来",
 		desc: "司机正在赶往目的地",
-		degree: _.random(360)
+		degree: _.random(80, 110)
 	};
 	// 出发地
 	let dpoi = {
@@ -62,10 +62,10 @@ router.post('/driverlocation', (req, res, next) => {
 		// dpoi, // 出发地 pos
 		cpoi // driver pos
 	};
-	console.log(typeof mockJSON)
-	// setTimeout(() => {
+	// console.log(typeof mockJSON)
+	setTimeout(() => {
 	res.send(mockJSON)
-	// }, 300);
+	}, 1e3);
 });
 
 function _getRandPos(arr) {
