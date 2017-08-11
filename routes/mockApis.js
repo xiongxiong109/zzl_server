@@ -44,7 +44,7 @@ router.post('/driverlocation', (req, res, next) => {
 		lng: arrlng[mockI],
 		// desc: "司机正在赶来",
 		desc: "司机正在赶往目的地",
-		degree: 40
+		degree: _.random(360)
 	};
 	// 出发地
 	let dpoi = {
@@ -57,9 +57,9 @@ router.post('/driverlocation', (req, res, next) => {
 		lng: arrlng[5]
 	};
 	let mockJSON = {
-		gpspoi, // my pos
+		// gpspoi, // my pos
 		apoi, // 目的地 pos
-		dpoi, // 出发地 pos
+		// dpoi, // 出发地 pos
 		cpoi // driver pos
 	};
 	console.log(typeof mockJSON)
