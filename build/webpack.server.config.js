@@ -2,11 +2,11 @@
 const path = require('path');
 const merge = require('webpack-merge')
 const nodeExternals = require('webpack-node-externals')
-const baseConfig = require('./webpack.base.config.js')
+const baseConfig = require('./webpack.base.config')
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin')
 
 module.exports = merge(baseConfig, {
-	entry: path.resolve('./', 'routes/ssr/entry-server.js'),
+	entry: path.resolve('./', 'routes/ssr/entry-server'),
 	target: 'node',
 	output: {
 		filename: 'entry-server.js', // 必须加name, 并且需要是js文件, 否则编译不通过
