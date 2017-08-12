@@ -12,6 +12,12 @@ import ssrRoutes from './routes/ssrRoutes'
 import mockApis from './routes/mockApis'
 import apis from './routes/apis'
 
+import CONFIG from './config'
+import webpack from 'webpack'
+import webpackDevMiddleware from 'webpack-dev-middleware'
+import clientConfig from './build/webpack.client.config'
+import serverConfig from './build/webpack.server.config'
+
 const app = express();
 
 // view engine setup
@@ -27,6 +33,31 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(fetch); // fetch middleware
+
+// webpack dev
+let { Env } = CONFIG;
+if (Env == 'DEV') {
+  // 在dev环境下, 启用webpackDevMiddleware进行webpack打包,
+  // 但是这个时候打包出来的文件并没有生成到dist目录下
+  // 而是以webpack dev server 的path存在内存中的
+  // 虚拟目录可以通过/public/来获取webpack打包后的静态资源
+  // 这个webpackDevMiddleware其实也是一个中间件,如果想让/public/
+  // 生效, 则必须保证中间件路由的顺序
+  app.use(webpackDevMiddleware(webpack(clientConfig), {
+    publicPath: '/ssr/',
+    stats: {
+      colors: true
+    }
+  }));
+  app.use(webpackDevMiddleware(webpack(serverConfig), {
+    stats: {
+      colors: true
+    },
+    publicPath: '/ssr/',
+    serverSideRender: true
+  }));
+}
+
 app.use('/testApis', mockApis);
 app.use('/1.0.0/web/', apis);
 app.use('/ssr', ssrRoutes); // 服务端渲染页面

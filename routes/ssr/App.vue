@@ -1,5 +1,5 @@
 <template>
-	<div id="app" class="box">
+	<div class="box">
 		<p @click="evt_clientTrigger">click me: vue_ssr_server_bundle_render</p>
 		<p>{{msg}}</p>
 		<p v-if="hidden">{{hidden}}</p>

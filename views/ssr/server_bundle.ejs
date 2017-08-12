@@ -17,8 +17,8 @@
 	<h4>{{title}}</h4>
 	<p>url: {{path}}</p>
 	<!-- 在服务端渲染的时候, vue-ssr会通过下面这句注释把内容渲染出来 -->
-	<!--vue-ssr-outlet-->
-	<!-- 引入客户端js -->
-	<script type="text/javascript" src="/dist/main.7c395ea.js"></script>
+	<div id="app">
+		<!--vue-ssr-outlet-->
+	</div>
 </body>
 </html>
