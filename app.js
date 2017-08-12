@@ -43,19 +43,18 @@ if (Env == 'DEV') {
   // 虚拟目录可以通过/public/来获取webpack打包后的静态资源
   // 这个webpackDevMiddleware其实也是一个中间件,如果想让/public/
   // 生效, 则必须保证中间件路由的顺序
-  app.use(webpackDevMiddleware(webpack(clientConfig), {
-    publicPath: '/ssr/',
-    stats: {
-      colors: true
-    }
-  }));
-  app.use(webpackDevMiddleware(webpack(serverConfig), {
-    stats: {
-      colors: true
-    },
-    publicPath: '/ssr/',
-    serverSideRender: true
-  }));
+  // app.use(webpackDevMiddleware(webpack(clientConfig), {
+  //   publicPath: '/',
+  //   stats: {
+  //     colors: true
+  //   }
+  // }));
+  // app.use(webpackDevMiddleware(webpack(serverConfig), {
+  //   stats: {
+  //     colors: true
+  //   },
+  //   serverSideRender: true
+  // }));
 }
 
 app.use('/testApis', mockApis);

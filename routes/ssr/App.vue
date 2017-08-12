@@ -1,9 +1,10 @@
 <template>
 	<div class="box">
-		<p @click="evt_clientTrigger">click me: vue_ssr_server_bundle_render</p>
+		<p @click="evt_clientTrigger">click me: vue_ssr</p>
+		<p>同构client and server</p>
 		<p>{{msg}}</p>
 		<p v-if="hidden">{{hidden}}</p>
-		<home></home>
+		<home title="xiong"></home>
 	</div>
 </template>
 <style type="text/css">

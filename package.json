@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "dev": "nodemon ./bin/www",
     "bu_server": "webpack --color --progress --config ./build/webpack.server.config.js",
-    "bu_client": "webpack --color --progress --config ./build/webpack.client.config.js"
+    "bu_client": "webpack --color --progress --config ./build/webpack.client.config.js",
+    "build": "npm run bu_server && npm run bu_client"
   },
   "config": {
     "env": "DEV"
