@@ -10,4 +10,17 @@ router.post('/', (req, res, next) => {
 	res.send('async data from backend');
 });
 
+router.post('/todo', (req, res, next) => {
+	let list = [
+		'fetch data',
+		'update head info',
+		'layout',
+		'middleware',
+		'scrollToTop',
+		'transition',
+		'validate'
+	];
+	res.send({list});
+})
+
 module.exports = router
