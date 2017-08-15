@@ -1,2 +1,0 @@
-webpackJsonp([2],{115:function(e,n,t){var r=t(8)(null,t(307),null,null);e.exports=r.exports},307:function(e,n){e.exports={render:function(){var e=this,n=e.$createElement;e._self._c;return e._m(0)},staticRenderFns:[function(){var e=this,n=e.$createElement,t=e._self._c||n;return t("div",{staticClass:"com-page"},[t("h4",[e._v("404")])])}]}}});
-//# sourceMappingURL=2.2ee5e7447af230a1ab3b.js.map
