@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0">
     <title>zzl_2.0</title>
-  <link href="/v2/css/main.396e500d8ef18a85c3d083a409ef481e.css" rel="stylesheet"></head>
+  <link href="/v2/css/dtPage.396e500d8ef18a85c3d083a409ef481e.css" rel="stylesheet"></head>
   <body>
     <div id="app-box"></div>
     <script type="text/javascript">
@@ -28,5 +28,5 @@
       });
     </script>
     <!-- built files will be auto injected -->
-  <script type="text/javascript" src="/v2/js/manifest.bbaf7216a83bd1e0fc52.js"></script><script type="text/javascript" src="/v2/js/vendor.f154c54e36c951067f39.js"></script><script type="text/javascript" src="/v2/js/main.0dc640d3a83bbb795dac.js"></script></body>
+  <script type="text/javascript" src="/v2/js/manifest.bbaf7216a83bd1e0fc52.js"></script><script type="text/javascript" src="/v2/js/vendor.f154c54e36c951067f39.js"></script><script type="text/javascript" src="/v2/js/dtPage.fb517e2a1716a6e06988.js"></script></body>
 </html>
