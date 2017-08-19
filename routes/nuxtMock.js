@@ -3,7 +3,11 @@ import express from 'express'
 import request from 'request'
 import GITHUB_CONFIG from '../config/github'
 import cros from '../middlewares/cros'
-import { githubTokenMiddleware, githubUserMiddleware } from '../middlewares/github'
+import { 
+	githubTokenMiddleware,
+	githubUserMiddleware,
+	githubSearchRegiMiddleware
+} from '../middlewares/github'
 
 const router = express.Router()
 
@@ -26,6 +30,7 @@ router.post('/todo', (req, res, next) => {
 	res.send({list});
 })
 
+// github 授权登录
 router.post(
 	'/github/auth',
 	githubTokenMiddleware,
@@ -46,5 +51,20 @@ router.post(
 		res.send({err});
 	}
 })
+
+// github查询project
+router.post(
+	'/github/search',
+	githubSearchRegiMiddleware,
+	async (req, res, next) => {
+	let { queryStr } = req.body;
+	let rst;
+	try {
+		rst = await req.queryRegistry(queryStr);
+	} catch (err) {
+		rst = err;
+	}
+	res.send(rst);
+});
 
 module.exports = router

@@ -49,3 +49,26 @@ export const githubUserMiddleware = (req, res, next) => {
 	});
 	next();
 };
+
+export const githubSearchRegiMiddleware = (req, res, next) => {
+	req.queryRegistry = async (queryStr = '') =>
+	new Promise((resolve, reject) => {
+		request({
+			headers: {
+				'User-Agent': GITHUB_CONFIG.app_nm
+			},
+			url: `https://api.github.com/search/repositories?q=${queryStr}`,
+			method: 'get',
+			timeout: 8000,
+		}, (err, rs, body) => {
+			console.log(err);
+			console.log(body);
+			if (err) {
+				reject(err)
+			} else {
+				resolve(body)
+			}
+		})
+	});
+	next();
+}
