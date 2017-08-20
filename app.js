@@ -12,6 +12,7 @@ import ssrRoutes from './routes/ssrRoutes'
 import mockApis from './routes/mockApis'
 import nuxtMockApis from './routes/nuxtMock'
 import apis from './routes/apis'
+import qqMusicApis from './routes/qqMusic'
 
 import CONFIG from './config'
 import webpack from 'webpack'
@@ -58,6 +59,7 @@ if (Env == 'DEV') {
   // }));
 }
 
+app.use('/qq_music', qqMusicApis);
 app.use('/testApis', mockApis);
 app.use('/nuxt/mock', nuxtMockApis);
 app.use('/1.0.0/web/', apis);
