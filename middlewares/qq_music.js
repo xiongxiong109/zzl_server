@@ -30,8 +30,12 @@ export const qqMusicSourceMiddle = (req, res, next) => {
 	let { id } = req.query;
 	req.getSource = async () => new Promise((resolve, reject) => {
 		request({
+			headers: {
+				'referer': 'https://m.y.qq.com/',
+				'upgrade-insecure-requests': 1
+			},
 			url: `${playHost}?songmid=${id}&ADTAG=myqq&from=myqq&channel=10007100`,
-			method: 'get',
+			method: 'GET',
 			timeout: 10000
 		}, (err, rst, body) => {
 			if (err) {
