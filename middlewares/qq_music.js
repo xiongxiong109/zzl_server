@@ -1,7 +1,9 @@
 import request from 'request'
 
 const searchHost = 'https://c.y.qq.com/soso/fcgi-bin/search_for_qq_cp';
+const playHost = 'https://c.y.qq.com/v8/playsong.html';
 
+// 搜索qq音乐中间件
 export const qqMusicSearchMiddle = (req, res, next) => {
 	req.searchMusic = async (
 		search = ''
@@ -21,5 +23,23 @@ export const qqMusicSearchMiddle = (req, res, next) => {
 			}
 		})
 	})
+	next();
+}
+
+export const qqMusicSourceMiddle = (req, res, next) => {
+	let { id } = req.query;
+	req.getSource = async () => new Promise((resolve, reject) => {
+		request({
+			url: `${playHost}?songmid=${id}&ADTAG=myqq&from=myqq&channel=10007100`,
+			method: 'get',
+			timeout: 10000
+		}, (err, rst, body) => {
+			if (err) {
+				reject(err)
+			} else { // 获取的是一个页面
+				resolve(body);
+			}
+		})
+	});
 	next();
 }
