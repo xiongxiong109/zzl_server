@@ -29,12 +29,15 @@ export const qqMusicSearchMiddle = (req, res, next) => {
 export const qqMusicSourceMiddle = (req, res, next) => {
 	let { id } = req.query;
 	req.getSource = async () => new Promise((resolve, reject) => {
+		let url = `${playHost}?songmid=${id}&ADTAG=myqq&from=myqq&channel=10007100`;
+		console.log(url);
 		request({
 			headers: {
-				'referer': 'https://m.y.qq.com/',
-				'upgrade-insecure-requests': 1
+				// qq的m站点需要设置正确的host, *.qq.com (80以外的端口号并没有被屏蔽)
+				// 同时需要设置mobile ua, 不然的话, 会被认为是错误的请求而跳转
+				'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
 			},
-			url: `${playHost}?songmid=${id}&ADTAG=myqq&from=myqq&channel=10007100`,
+			url,
 			method: 'GET',
 			timeout: 10000
 		}, (err, rst, body) => {

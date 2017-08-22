@@ -1,8 +1,9 @@
 // qq music
 import express from 'express'
+import cheerio from 'cheerio'
 import { qqMusicSearchMiddle, qqMusicSourceMiddle } from '../middlewares/qq_music'
-const router = express.Router()
 
+const router = express.Router()
 /*
 	计划调用qq music的search api, 来获取网络音乐资源
 	并尝试下载需要付费的音乐
@@ -45,8 +46,11 @@ router.get('/song', qqMusicSourceMiddle, async (req, res, next) => {
 	} catch(err) {
 		rst = err;
 	}
-	console.log(rst);
-	res.send('ok');
+	// 在页面中注入自己的js脚本
+	let injectScript = `<script src="/qq_music/js/pulldown_music.js"></script>`;
+	let $ = cheerio.load(rst);
+	$('body').append($(injectScript));
+	res.end($.html());
 });
 
 export default router
