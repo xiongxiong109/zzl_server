@@ -8,7 +8,6 @@ router.get('/detail/*', (req, res, next) => {
 	res.render('detail', {});
 });
 router.get('/*', (req, res, next) => {
-	console.log(req);
   res.render('index', { title: 'Express' });
 });
 

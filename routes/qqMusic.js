@@ -1,6 +1,8 @@
 // qq music
 import express from 'express'
 import cheerio from 'cheerio'
+import request from 'request'
+import { createReadStream } from 'fs'
 import { qqMusicSearchMiddle, qqMusicSourceMiddle } from '../middlewares/qq_music'
 
 const router = express.Router()
