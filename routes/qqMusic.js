@@ -11,6 +11,7 @@ const router = express.Router()
 	并尝试下载需要付费的音乐
 	req: {
 		q: string, 搜索字符串
+		p: number, 搜索分页
 	}
 	res: {
 		code,
@@ -22,11 +23,11 @@ const router = express.Router()
 	}
 */
 router.get('/search', qqMusicSearchMiddle, async (req, res, next) => {
-	let { q } = req.query;
+	let { q, p } = req.query;
 	let rst;
 	if (q) {
 		try {
-			rst = await req.searchMusic(q);
+			rst = await req.searchMusic(q, p);
 		} catch (err) {
 			rst = err
 		}
