@@ -2,10 +2,13 @@
 import express from 'express'
 import cheerio from 'cheerio'
 import request from 'request'
+import cros from '../middlewares/cros'
 import { createReadStream } from 'fs'
 import { qqMusicSearchMiddle, qqMusicSourceMiddle } from '../middlewares/qq_music'
 
 const router = express.Router()
+
+router.use(cros)
 /*
 	计划调用qq music的search api, 来获取网络音乐资源
 	并尝试下载需要付费的音乐
@@ -22,8 +25,8 @@ const router = express.Router()
 		}
 	}
 */
-router.get('/search', qqMusicSearchMiddle, async (req, res, next) => {
-	let { q, p } = req.query;
+router.post('/search', qqMusicSearchMiddle, async (req, res, next) => {
+	let { q, p } = req.body;
 	let rst;
 	if (q) {
 		try {
