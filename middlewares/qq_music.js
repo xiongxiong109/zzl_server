@@ -15,7 +15,7 @@ export const qqMusicSearchMiddle = (req, res, next) => {
 		request({
 			url,
 			method: 'get',
-			timeout: 3000
+			timeout: 10000
 		}, (err, rst, body) => {
 			if (err) {
 				reject(err);
