@@ -51,3 +51,21 @@ export const qqMusicSourceMiddle = (req, res, next) => {
 	});
 	next();
 }
+
+// 排行查询
+export const qqMusicRankMiddle = (req, res, next) => {
+	let url = 'https://c.y.qq.com/v8/fcg-bin/fcg_myqq_toplist.fcg?g_tk=2090557760&uin=0&format=json&inCharset=utf-8&outCharset=utf-8&notice=0&platform=h5&needNewCode=1&_=1504487010048';
+	req.queryRank = async () => new Promise((resolve, reject) => {
+		request({
+			url,
+			method: 'GET',
+			timeout: 10000
+		}, (err, rst, body) => {
+			if (err) {
+				reject(err)
+			}
+			resolve(body)
+		})
+	});
+	next();
+}

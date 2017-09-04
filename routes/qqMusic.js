@@ -4,7 +4,7 @@ import cheerio from 'cheerio'
 import request from 'request'
 import cros from '../middlewares/cros'
 import { createReadStream } from 'fs'
-import { qqMusicSearchMiddle, qqMusicSourceMiddle } from '../middlewares/qq_music'
+import { qqMusicSearchMiddle, qqMusicSourceMiddle, qqMusicRankMiddle } from '../middlewares/qq_music'
 
 const router = express.Router()
 
@@ -57,6 +57,12 @@ router.get('/song', qqMusicSourceMiddle, async (req, res, next) => {
 	let $ = cheerio.load(rst);
 	$('body').append($(injectScript));
 	res.end($.html());
+});
+
+// 排行列表查询
+router.get('/rank', qqMusicRankMiddle, async (req, res, next) => {
+	let rst = await req.queryRank();
+	res.send(rst);
 });
 
 export default router
