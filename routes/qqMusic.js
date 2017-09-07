@@ -4,7 +4,12 @@ import cheerio from 'cheerio'
 import request from 'request'
 import cros from '../middlewares/cros'
 import { createReadStream } from 'fs'
-import { qqMusicSearchMiddle, qqMusicSourceMiddle, qqMusicRankMiddle } from '../middlewares/qq_music'
+import {
+	qqMusicGet,
+	qqMusicSearchMiddle,
+	qqMusicSourceMiddle,
+	qqMusicRankMiddle
+} from '../middlewares/qq_music'
 
 const router = express.Router()
 
@@ -30,7 +35,7 @@ router.post('/search', qqMusicSearchMiddle, async (req, res, next) => {
 	let rst;
 	if (q) {
 		try {
-			rst = await req.searchMusic(q, p);
+			rst = await req.searchMusic();
 		} catch (err) {
 			rst = err
 		}
@@ -62,6 +67,19 @@ router.get('/song', qqMusicSourceMiddle, async (req, res, next) => {
 // 排行列表查询
 router.get('/rank', qqMusicRankMiddle, async (req, res, next) => {
 	let rst = await req.queryRank();
+	res.send(rst);
+});
+
+// 排行详情 toplist
+router.get('/toplist', async (req, res, next) => {
+	let rst;
+	let url = 'https://c.y.qq.com/v8/fcg-bin/fcg_v8_toplist_cp.fcg';
+	let {id} = req.query;
+	try {
+		rst = await qqMusicGet(`${url}?type=top&topid=${id}`);
+	} catch (err) {
+		rst = err;
+	}
 	res.send(rst);
 });
 
