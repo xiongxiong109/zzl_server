@@ -23,10 +23,10 @@ export default (req, res, next) => {
 		params = {},
 		timeout = 5000
 	) => new Promise((resolve, reject) => {
-
-		let { API_HOST } = CONFIG;
+		console.log();
+		let { API_HOST, API_HOST_V2 } = CONFIG;
 		let { token } = params;
-		let url = `${API_HOST}${path}`;
+		let url = `${/2.0.0/.test(req.baseUrl) ? API_HOST_V2 : API_HOST}${path}`;
 		let _token = _getToken();
 		if (token != _token) {
 			params.token = _token;

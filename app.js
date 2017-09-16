@@ -13,7 +13,7 @@ import mockApis from './routes/mockApis'
 import nuxtMockApis from './routes/nuxtMock'
 import apis from './routes/apis'
 import qqMusicApis from './routes/qqMusic'
-import nightSpider from './routes/nightSpider'
+// import nightSpider from './routes/nightSpider'
 
 import CONFIG from './config'
 import webpack from 'webpack'
@@ -63,8 +63,8 @@ if (Env == 'DEV') {
 app.use('/qq_music', qqMusicApis);
 app.use('/testApis', mockApis);
 app.use('/nuxt/mock', nuxtMockApis);
-app.use('/nightmare', nightSpider);
-app.use('/1.0.0/web/', apis);
+// app.use('/nightmare', nightSpider);
+app.use('/:version/web/', apis);
 app.use('/ssr', ssrRoutes); // 服务端渲染页面
 app.use('/', routes); // 这个中间件里面放了vue router /* 匹配404路由, 所以/ssr要放在上面
 
